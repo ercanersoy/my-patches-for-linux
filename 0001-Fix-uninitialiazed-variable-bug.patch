@@ -1,0 +1,29 @@
+From f7a1b52db33e1f41cccec2f784c543ca16cd212f Mon Sep 17 00:00:00 2001
+From: Ercan Ersoy <ercanersoy@ercanersoy.net>
+Date: Sat, 8 Jan 2022 18:26:51 +0300
+Subject: [PATCH 1/1] Fix uninitialiazed variable bug
+
+This bug is in mem_cgroup_resize_max function
+in mm/memcontrol.c source file.
+
+Signed-off-by: Ercan Ersoy <ercanersoy@ercanersoy.net>
+---
+ mm/memcontrol.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/memcontrol.c b/mm/memcontrol.c
+index 2ed5f2a0879d..977f58b8f1e6 100644
+--- a/mm/memcontrol.c
++++ b/mm/memcontrol.c
+@@ -3351,7 +3351,7 @@ static int mem_cgroup_resize_max(struct mem_cgroup *memcg,
+ {
+ 	bool enlarge = false;
+ 	bool drained = false;
+-	int ret;
++	int ret = 0;
+ 	bool limits_invariant;
+ 	struct page_counter *counter = memsw ? &memcg->memsw : &memcg->memory;
+ 
+-- 
+2.30.2
+

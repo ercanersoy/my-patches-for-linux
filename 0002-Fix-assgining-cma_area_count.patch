@@ -1,0 +1,29 @@
+From 5d3d01a3a0f7339617d1df945c0bd0ec1ab91ae3 Mon Sep 17 00:00:00 2001
+From: Ercan Ersoy <ercanersoy@ercanersoy.net>
+Date: Sun, 9 Jan 2022 10:01:14 +0300
+Subject: [PATCH 2/2] Fix assgining cma_area_count
+
+Fix assigning to cma->name in cma_init_reserved_mem function
+in mm/cma.c source file.
+
+Signed-off-by: Ercan Ersoy <ercanersoy@ercanersoy.net>
+---
+ mm/cma.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mm/cma.c b/mm/cma.c
+index bc9ca8f3c487..03f01d1f1b57 100644
+--- a/mm/cma.c
++++ b/mm/cma.c
+@@ -199,7 +199,7 @@ int __init cma_init_reserved_mem(phys_addr_t base, phys_addr_t size,
+ 	if (name)
+ 		snprintf(cma->name, CMA_MAX_NAME, name);
+ 	else
+-		snprintf(cma->name, CMA_MAX_NAME,  "cma%d\n", cma_area_count);
++		snprintf(cma->name, CMA_MAX_NAME,  "cma%u\n", cma_area_count);
+ 
+ 	cma->base_pfn = PFN_DOWN(base);
+ 	cma->count = size >> PAGE_SHIFT;
+-- 
+2.30.2
+

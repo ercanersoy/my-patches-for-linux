@@ -1,0 +1,18 @@
+From f7a1b52db33e1f41cccec2f784c543ca16cd212f Mon Sep 17 00:00:00 2001
+From: Ercan Ersoy <ercanersoy@ercanersoy.net>
+Date: Sat, 8 Jan 2022 18:36:56 +0300
+Subject: [PATCH 0/1] *** SUBJECT HERE ***
+
+*** BLURB HERE ***
+
+Ercan Ersoy (1):
+  Fix uninitialiazed variable bug
+
+ mm/memcontrol.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+base-commit: d1587f7bfe9a0f97a75d42ac1489aeda551106bc
+-- 
+2.30.2
+
